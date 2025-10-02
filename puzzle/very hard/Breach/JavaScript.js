@@ -129,7 +129,7 @@ const digits = [
   [" +++ ", "+    ", "++++ ", "+   +", "+++  ", "     "],
   ["++++++", "    ++", "   ++ ", "  ++  ", " ++   ", " +    "],
   [" ++ ", "+  +", " ++ ", "+  +", " ++ ", "    "],
-  [" ++++ ", "+    +", " ++++ ", "    + ", "    + ", ""], //J'ai enlevé le dernier string car le '+' n'etait pas adhjacent au autre et mon algorithme de detection de contours ne le prennais pas en compte
+  [" ++++ ", "+    +", " ++++ ", "    + ", "    + ", ""], 
 ];
 const colors = {
   W: "GRAY",
