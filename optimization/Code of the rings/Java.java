@@ -19,7 +19,6 @@ class Player {
         Scanner in = new Scanner(System.in);
         String magicPhrase = in.nextLine();
 
-
         String[] fields = new String[30];
         for(int i = 0; i < 30 ; i++){
             fields [i] = " ";
