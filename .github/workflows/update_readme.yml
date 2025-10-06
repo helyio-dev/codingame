@@ -1,0 +1,36 @@
+name: Update CodinGame Language Stats
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+
+      - name: Generate CodinGame Language Badges
+        id: generate
+        uses: helyio/codingame-stats@v1 
+        with:
+          repository_root: '.' 
+          output_marker: 'CG_LANG_BADGES'
+
+      - name: Update README.md with Badges
+        uses: akhil-ghatare/markdown-replacer@v1
+        with:
+          marker: 'CG_LANG_BADGES'
+          replacement: ${{ steps.generate.outputs.badges_markdown }}
+          file: 'README.md'
+
+      - name: Commit and Push README changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "🤖 Update CodinGame Language Badges"
+          branch: ${{ github.ref_name }}
