@@ -1,0 +1,20 @@
+name: Update Codingame Stats
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: greg0f/codingame-stats-readme@v1
+        with:
+          user_id: 15bc4f3476f1d883390f9047bd3f7bf40352776 
+          
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          
+          commit_message: "📊 update stats"
