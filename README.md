@@ -12,12 +12,6 @@ Ce dépôt est un **carnet de bord** de ma progression sur Codingame. Il a pour 
 
 ---
 
-## 📊 Ma Progression
-
-Cette section est mise à jour automatiquement par [GitHub Action](.github/workflows/codingame.yml)
-
----
-
 ## 📂 Organisation du dépôt
 
 Toutes les solutions sont organisées pour une navigation facile :
