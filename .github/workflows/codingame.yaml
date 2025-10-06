@@ -1,4 +1,4 @@
-name: Update Codingame Stats
+name: Update Codingame Metrics
 
 on:
   schedule:
@@ -6,15 +6,22 @@ on:
   workflow_dispatch:
 
 jobs:
-  update-stats:
+  codingame:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - uses: greg0f/codingame-stats-readme@v1
+      - uses: lowlighter/metrics@latest
         with:
-          user_id: 15bc4f3476f1d883390f9047bd3f7bf40352776 
+          token: ${{ secrets.GITHUB_TOKEN }}
           
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          user: helyio-dev
           
-          commit_message: "📊 update stats"
+          filename: README.md
+          
+          template: classic
+          plugin_codingame: yes
+          plugin_codingame_user: 15bc4f3476f1d883390f9047bd3f7bf40352776 
+          plugin_codingame_sections: global, community, languages, puzzles
+          
+          base: ""
+          disable_jemoji: yes
+          config_output: json
