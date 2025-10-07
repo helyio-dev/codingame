@@ -1,8 +1,5 @@
-a,b,x,y=[int(i)for i in input().split()]
+a,b,x,y=map(int,input().split())
 while 1:
- p=""
- if y<b:y+=1;p="S"
- if y>b:y-=1;p="N"
- if x<a:x+=1;p+="E"
- if x>a:x-=1;p+="W"
+ p=('S'*(y<b)+'N'*(y>b)+('E'*(x<a)+'W'*(x>a)))
+ y+=y<b;y-=y>b;x+=x<a;x-=x>a
  print(p)
