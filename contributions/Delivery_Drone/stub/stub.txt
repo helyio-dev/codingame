@@ -1,0 +1,13 @@
+read W:int
+read H:int
+
+read xBase:int
+read yBase:int
+
+read E:int
+read nbDeliveries:int
+
+loop nbDeliveries read x:int y:int
+loop H read row:string(50)
+
+write answer
