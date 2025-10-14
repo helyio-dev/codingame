@@ -1,0 +1,1 @@
+gets;a=gets.split.map &:to_i;puts a.empty??0:a.min_by{|x|[x.abs,-x]}

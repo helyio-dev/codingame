@@ -1,0 +1,1 @@
+l,h=2.times.map{gets.to_i};t=gets.chomp.upcase;r=h.times.map{gets.chomp};h.times{|i|puts t.chars.map{|c|r[i][(c>?@&&c<?[?c.ord-65:26)*l,l]}*""}
