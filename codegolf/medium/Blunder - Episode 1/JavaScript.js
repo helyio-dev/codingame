@@ -1,0 +1,4 @@
+for([L,C]=readline().split` `.map(Number),M=[],T=[],y=0;y<L;y++){l=readline().split``;l.forEach((v,x)=>{v=='@'&&(X=x,Y=y);v=='T'&&T.push([x,y])});M.push(l)}
+D=['S','E','N','W'];dx=[0,1,0,-1];dy=[1,0,-1,0];dir=0;B=0,I=0;m=[];Lmt=1e4
+while(m.length<Lmt){c=M[Y][X];c>='A'&&c<='Z'&&(dir={S:0,E:1,N:2,W:3}[c]??dir);c=='B'&&(B=!B);c=='I'&&(I=!I);c=='T'&&([X,Y]=T[0][0]==X&&T[0][1]==Y?T[1]:T[0]);O=I?[3,2,1,0]:[0,1,2,3];nx=X+dx[dir];ny=Y+dy[dir];(M[ny][nx]=='#'||(M[ny][nx]=='X'&&!B))&&O.some(i=>{tx=X+dx[i];ty=Y+dy[i];if(M[ty][tx]!='#'&&(M[ty][tx]!='X'||B))return dir=i,nx=tx,ny=ty,!0});M[ny][nx]=='X'&&B&&(M[ny][nx]=' ');m.push(['SOUTH','EAST','NORTH','WEST'][dir]);X=nx;Y=ny;if(M[Y][X]=='$')break}
+console.log(m.length>=Lmt?'LOOP':m.join`\n`)

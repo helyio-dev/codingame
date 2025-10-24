@@ -1,0 +1,1 @@
+for(a=readline().split` `,W=+a[0],H=+a[1],N=+readline(),b=readline().split` `,X=+b[0],Y=+b[1],x0=0,x1=W-1,y0=0,y1=H-1;;){d=readline();d.includes('U')&&(y1=Y-1);d.includes('D')&&(y0=Y+1);d.includes('L')&&(x1=X-1);d.includes('R')&&(x0=X+1);X=x0+x1>>1;Y=y0+y1>>1;console.log(X+' '+Y)}
