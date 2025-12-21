@@ -99,11 +99,9 @@ def get_path_length(start_x, start_y, target_x, target_y, partner_pos):
 
 def determine_best_target_optimized(player_x, player_y, player_item, table_items, partner_pos):
     
-    # 1. Priorité: Livrer si le plat est complet
     if "DISH-BLUEBERRIES-ICE_CREAM" in player_item:
         return EQUIPMENT_LOCATIONS['W']
 
-    # 2. Priorité: Compléter le plat
     if "DISH" in player_item:
         item_list = player_item.split('-')
         
@@ -113,7 +111,6 @@ def determine_best_target_optimized(player_x, player_y, player_item, table_items
             best_target_pos = None
             min_dist = 999
             
-            # Évaluer les ingrédients manquants (B, I)
             for ingredient in missing_ingredients:
                 target_pos = ITEM_LOCATIONS['B'] if ingredient == 'BLUEBERRIES' else EQUIPMENT_LOCATIONS['I']
                 dist = get_path_length(player_x, player_y, target_pos[0], target_pos[1], partner_pos)
@@ -125,18 +122,14 @@ def determine_best_target_optimized(player_x, player_y, player_item, table_items
             if best_target_pos:
                 return best_target_pos
     
-    # 3. Priorité: Récupérer un plat semi-fini sur une table
     if player_item == "NONE":
         for pos, item in table_items:
             if "DISH-" in item and "DISH-BLUEBERRIES-ICE_CREAM" not in item:
                 return pos
     
-    # 4. Priorité: Commencer un nouveau plat (prendre DISH)
     if player_item == "NONE":
         return EQUIPMENT_LOCATIONS['D']
         
-    # 5. Priorité: Déposer l'ingrédient sur une table libre pour optimiser les déplacements
-    # Si le joueur porte un ingrédient seul (B ou I), mais que le DISH est loin, ou qu'il faut libérer la main
     if player_item in INGREDIENTS_NEEDED or ("DISH" in player_item and "BLUEBERRIES" in player_item and "ICE_CREAM" not in player_item and "DISH-BLUEBERRIES-ICE_CREAM" not in player_item):
         occupied_tables = [pos for pos, _ in table_items]
         
@@ -144,7 +137,7 @@ def determine_best_target_optimized(player_x, player_y, player_item, table_items
             if table_pos not in occupied_tables:
                 return table_pos
         
-    return EQUIPMENT_LOCATIONS['W'] # Fallback: aller à la fenêtre
+    return EQUIPMENT_LOCATIONS['W'] 
 
 while True:
     try:
